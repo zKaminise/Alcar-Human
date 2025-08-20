@@ -6,26 +6,28 @@ export default async function handler(req: any, res: any) {
 
   try {
     const { name, email, company, phone, service, message, hp } = req.body || {};
-
     if (hp) return res.status(200).json({ ok: true });
 
-    const html = `
-      <h2>Nova solicitação de proposta</h2>
-      <p><b>Nome:</b> ${name}</p>
-      <p><b>E-mail:</b> ${email}</p>
-      <p><b>Empresa:</b> ${company}</p>
-      <p><b>Telefone:</b> ${phone}</p>
-      <p><b>Serviço:</b> ${service}</p>
-      <p><b>Mensagem:</b><br/>${String(message).replace(/\n/g, "<br/>")}</p>
-    `;
+    if (!name || !email || !company || !phone || !service || !message) {
+      return res.status(400).json({ error: "Campos obrigatórios faltando." });
+    }
 
     const resend = new Resend(process.env.RESEND_API_KEY!);
+
     await resend.emails.send({
       from: "Site <no-reply@seudominio.com.br>",
       to: process.env.TO_EMAIL!,
       replyTo: email,
       subject: `Proposta | ${company} - ${name}`,
-      html,
+      html: `
+        <h2>Nova solicitação de proposta</h2>
+        <p><b>Nome:</b> ${name}</p>
+        <p><b>E-mail:</b> ${email}</p>
+        <p><b>Empresa:</b> ${company}</p>
+        <p><b>Telefone:</b> ${phone}</p>
+        <p><b>Serviço:</b> ${service}</p>
+        <p><b>Mensagem:</b><br/>${String(message).replace(/\n/g, "<br/>")}</p>
+      `,
     });
 
     return res.status(200).json({ ok: true });
