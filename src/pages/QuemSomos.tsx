@@ -10,7 +10,7 @@ const QuemSomos = () => {
       <section className="relative pt-32 pb-20 bg-gradient-to-r from-black/80 to-black/60 overflow-hidden">
         <div 
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{ backgroundImage: `url(/src/assets/quem-somos-hero.jpg)` }}
+          style={{ backgroundImage: `url(/quem-somos-hero.jpg)` }}
         />
         <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-black/50" />
         <div className="relative text-white">
