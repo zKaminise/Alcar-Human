@@ -274,7 +274,7 @@ const Home = () => {
             o crescimento e a performance da sua empresa.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" asChild className="bg-white text-primary hover:bg-neutral-light">
+            <Button size="lg" asChild className="bg-white text-primary hover:bg-primary hover:text-white">
               <Link to="/contato">
                 Solicitar Proposta
                 <ArrowRight className="w-5 h-5 ml-2" />
@@ -284,7 +284,7 @@ const Home = () => {
               variant="outline" 
               size="lg" 
               asChild
-              className="border-white text-white hover:bg-white hover:text-primary"
+              className="border-none text-white bg-primary hover:bg-white hover:text-primary"
             >
               <Link to="/cases">
                 Ver Cases de Sucesso
