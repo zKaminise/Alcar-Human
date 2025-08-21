@@ -1,7 +1,7 @@
-// api/contact.ts
+// api/contact.mjs
 import { Resend } from "resend";
 
-export default async function handler(req: any, res: any) {
+export default async function handler(req, res) {
   if (req.method !== "POST") return res.status(405).end();
 
   try {
@@ -12,11 +12,11 @@ export default async function handler(req: any, res: any) {
       return res.status(400).json({ error: "Campos obrigatórios faltando." });
     }
 
-    const resend = new Resend(process.env.RESEND_API_KEY!);
+    const resend = new Resend(process.env.RESEND_API_KEY);
 
     await resend.emails.send({
       from: "Site <no-reply@seudominio.com.br>",
-      to: process.env.TO_EMAIL!,
+      to: process.env.TO_EMAIL,
       replyTo: email,
       subject: `Proposta | ${company} - ${name}`,
       html: `
