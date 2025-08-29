@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Quote, Star, ArrowLeft, ArrowRight, Building2, Users, TrendingUp } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const CasesSection = () => {
   const [currentCase, setCurrentCase] = useState(0);
@@ -78,7 +79,7 @@ const CasesSection = () => {
   };
 
   return (
-    <section id="cases" className="py-20 bg-background">
+    <section id="cases" className="py-20">
       <div className="container mx-auto px-4 sm:px-6">
         {/* Header */}
         <div className="text-center mb-16 animate-fade-in">
@@ -225,24 +226,17 @@ const CasesSection = () => {
               resultados extraordinários como fizemos com nossos clientes.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button
-                size="lg"
-                onClick={() => window.open('https://wa.me/5567996442404', '_blank')}
-                className="bg-white text-primary hover:bg-neutral-light"
-              >
-                Iniciar Projeto
+              <Button size="lg" asChild className="bg-primary hover:bg-primary-dark text-primary-foreground">
+                <Link to="/diferenciais">
+                  Iniciar Projeto
+                  <ArrowRight className="w-5 h-5 ml-2" />
+                </Link>
               </Button>
-              <Button
-                variant="outline"
-                size="lg"
-                onClick={() => {
-                  const element = document.querySelector('#contato');
-                  if (element) element.scrollIntoView({ behavior: 'smooth' });
-                }}
-                className="border-white text-white hover:bg-white hover:text-primary"
-              >
+            <Button size="lg" asChild className="bg-white border-primary border-2 text-primary hover:bg-primary hover:text-white">
+              <Link to="/contato">
                 Solicitar Proposta
-              </Button>
+              </Link>
+            </Button>
             </div>
           </div>
         </div>

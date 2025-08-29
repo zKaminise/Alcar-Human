@@ -2,7 +2,8 @@ import React from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { User, CheckCircle, Star, TrendingUp, BookOpen, Users } from 'lucide-react';
+import { User, CheckCircle, Star, TrendingUp, BookOpen, Users, ArrowRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const DesenvolvimentoPessoal = () => {
   const benefits = [
@@ -41,26 +42,28 @@ const DesenvolvimentoPessoal = () => {
     <div className="min-h-screen bg-background">
       {/* Hero Section */}
       <section className="relative pt-32 pb-20 bg-gradient-to-r from-black/80 to-black/60 overflow-hidden">
-        <div 
+        <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{ backgroundImage: `url(/desenvolvimento-pessoal-hero.jpg)` }}
         />
         <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-black/50" />
         <div className="relative text-white">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
-            <Badge className="mb-4 bg-white/20 text-white">Serviços</Badge>
-            <h1 className="text-4xl md:text-6xl font-bold mb-6">
-              Desenvolvimento Pessoal
-            </h1>
-            <p className="text-xl md:text-2xl opacity-90 mb-8">
-              Capacitação e crescimento individual para alcançar seu máximo potencial
-            </p>
-            <Button size="lg" variant="secondary">
-              Iniciar Jornada de Desenvolvimento
-            </Button>
+          <div className="container mx-auto px-4">
+            <div className="max-w-4xl mx-auto text-center">
+              <Badge className="mb-4 bg-white/20 text-white">Serviços</Badge>
+              <h1 className="text-4xl md:text-6xl font-bold mb-6">
+                Desenvolvimento Pessoal
+              </h1>
+              <p className="text-xl md:text-2xl opacity-90 mb-8">
+                Capacitação e crescimento individual para alcançar seu máximo potencial
+              </p>
+              <Button size="lg" asChild className="bg-primary hover:bg-primary-dark text-primary-foreground">
+                <Link to="/contato">
+                  Iniciar Jornada de Desenvolvimento
+                </Link>
+              </Button>
+            </div>
           </div>
-        </div>
         </div>
       </section>
 
@@ -74,24 +77,28 @@ const DesenvolvimentoPessoal = () => {
               </h2>
               <div className="space-y-4 text-muted-foreground">
                 <p>
-                  Nosso programa de Desenvolvimento Pessoal é desenhado para profissionais 
-                  que querem acelerar seu crescimento e alcançar novos patamares em suas 
+                  Nosso programa de Desenvolvimento Pessoal é desenhado para profissionais
+                  que querem acelerar seu crescimento e alcançar novos patamares em suas
                   carreiras e vidas pessoais.
                 </p>
                 <p>
-                  Através de metodologias comprovadas e acompanhamento personalizado, 
-                  ajudamos você a identificar suas forças, superar limitações e 
+                  Através de metodologias comprovadas e acompanhamento personalizado,
+                  ajudamos você a identificar suas forças, superar limitações e
                   desenvolver as competências necessárias para o sucesso.
                 </p>
                 <p>
-                  Cada jornada é única e personalizada, considerando seus objetivos 
+                  Cada jornada é única e personalizada, considerando seus objetivos
                   específicos, estilo de aprendizagem e contexto profissional.
                 </p>
               </div>
             </div>
             <div className="relative">
-              <div className="aspect-square bg-gradient-to-br from-primary/20 to-primary/5 rounded-2xl p-8 flex items-center justify-center">
-                <User className="w-32 h-32 text-primary" />
+              <div className="aspect-[4/3] rounded-2xl overflow-hidden shadow-elegant">
+                <img
+                  src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                  alt="Planejamento estratégico e análise de negócios"
+                  className="w-full h-full object-cover"
+                />
               </div>
             </div>
           </div>
@@ -129,8 +136,12 @@ const DesenvolvimentoPessoal = () => {
         <div className="container mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="relative">
-              <div className="aspect-square bg-gradient-to-br from-primary/20 to-primary/5 rounded-2xl p-8 flex items-center justify-center">
-                <TrendingUp className="w-32 h-32 text-primary" />
+              <div className="aspect-[4/3] rounded-2xl overflow-hidden shadow-elegant">
+                <img
+                  src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                  alt="Planejamento estratégico e análise de negócios"
+                  className="w-full h-full object-cover"
+                />
               </div>
             </div>
             <div>
@@ -216,11 +227,20 @@ const DesenvolvimentoPessoal = () => {
               Invista no seu crescimento e alcance novos patamares profissionais e pessoais.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg">
-                Iniciar Desenvolvimento
+              <Button size="lg" asChild className="bg-primary hover:bg-primary-dark text-primary-foreground">
+                <Link to="/contato">
+                  Iniciar Desenvolvimento
+                  <ArrowRight className="w-5 h-5 ml-2" />
+                </Link>
               </Button>
-              <Button size="lg" variant="outline">
-                Agendar Conversa
+              <Button size="lg" asChild className="bg-white border-primary border-2 text-primary hover:bg-primary hover:text-white">
+                <a
+                  href="https://wa.me/5567996442404?text=Quero%20agendar%20uma%20conversa%20para%20entender%20mais%20sobre%20o%20Desenvolvimento%20Pessoal"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Agendar Conversa
+                </a>
               </Button>
             </div>
           </div>

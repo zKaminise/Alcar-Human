@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { 
-  BarChart3, 
-  Users, 
-  GraduationCap, 
-  TrendingUp, 
+import { Link } from 'react-router-dom';
+import {
+  BarChart3,
+  Users,
+  GraduationCap,
+  TrendingUp,
   ArrowRight,
   CheckCircle,
   Target,
@@ -28,7 +29,8 @@ const SolutionsSection = () => {
         'Implementação de mudanças estruturais',
         'Acompanhamento de resultados'
       ],
-      color: 'primary'
+      color: 'primary',
+      image: 'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80'
     },
     {
       icon: Building,
@@ -41,7 +43,8 @@ const SolutionsSection = () => {
         'Programas de engajamento',
         'Rituais e práticas organizacionais'
       ],
-      color: 'secondary'
+      color: 'secondart',
+      image: 'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80'
     },
     {
       icon: GraduationCap,
@@ -54,7 +57,8 @@ const SolutionsSection = () => {
         'Acompanhamento pós-treinamento',
         'Certificações e avaliações'
       ],
-      color: 'accent'
+      color: 'accent',
+      image: 'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80'
     },
     {
       icon: Users,
@@ -67,12 +71,13 @@ const SolutionsSection = () => {
         'Planos de carreira estruturados',
         'Programas de retenção de talentos'
       ],
-      color: 'primary'
+      color: 'primary',
+      image: 'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80'
     }
   ];
 
   return (
-    <section id="solucoes" className="py-20 bg-background">
+    <section id="solucoes" className="py-20">
       <div className="container mx-auto px-4 sm:px-6">
         {/* Header */}
         <div className="text-center mb-16 animate-fade-in">
@@ -80,11 +85,11 @@ const SolutionsSection = () => {
             Nossas Soluções
           </div>
           <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-            Soluções <span className="text-primary">Estratégicas</span> que 
+            Soluções <span className="text-primary">Estratégicas</span> que
             <span className="text-secondary"> Transformam</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            Oferecemos um portfólio completo de soluções para impulsionar o crescimento 
+            Oferecemos um portfólio completo de soluções para impulsionar o crescimento
             e a performance da sua organização através do desenvolvimento estratégico.
           </p>
         </div>
@@ -94,21 +99,19 @@ const SolutionsSection = () => {
           {solutions.map((solution, index) => {
             const IconComponent = solution.icon;
             const isActive = activeSolution === index;
-            
+
             return (
               <Card
                 key={index}
-                className={`cursor-pointer transition-all duration-300 border-2 ${
-                  isActive 
-                    ? 'border-primary shadow-corporate scale-105' 
+                className={`cursor-pointer transition-all duration-300 border-2 ${isActive
+                    ? 'border-primary shadow-corporate scale-105'
                     : 'border-border hover:border-primary/50 hover:shadow-card'
-                }`}
+                  }`}
                 onClick={() => setActiveSolution(index)}
               >
                 <CardContent className="p-6 text-center">
-                  <div className={`w-16 h-16 mx-auto mb-4 rounded-xl flex items-center justify-center ${
-                    isActive ? 'bg-primary text-primary-foreground' : 'bg-primary/10 text-primary'
-                  }`}>
+                  <div className={`w-16 h-16 mx-auto mb-4 rounded-xl flex items-center justify-center ${isActive ? 'bg-primary text-primary-foreground' : 'bg-primary/10 text-primary'
+                    }`}>
                     <IconComponent className="w-8 h-8" />
                   </div>
                   <h3 className="text-lg font-semibold text-foreground mb-3">
@@ -135,7 +138,7 @@ const SolutionsSection = () => {
                   {solutions[activeSolution].title}
                 </h3>
               </div>
-              
+
               <p className="text-muted-foreground text-lg leading-relaxed mb-8">
                 {solutions[activeSolution].fullDescription}
               </p>
@@ -164,23 +167,13 @@ const SolutionsSection = () => {
 
             {/* Visual Element */}
             <div className="relative">
-              <div className="bg-gradient-to-br from-primary/10 to-secondary/10 rounded-2xl p-8 aspect-square flex items-center justify-center">
-                {React.createElement(solutions[activeSolution].icon, {
-                  className: "w-32 h-32 text-primary/20"
-                })}
-                
-                {/* Floating Elements */}
-                <div className="absolute top-4 right-4 bg-card rounded-lg shadow-card p-3 border border-border animate-bounce">
-                  <Target className="w-6 h-6 text-primary" />
-                </div>
-                
-                <div className="absolute bottom-4 left-4 bg-card rounded-lg shadow-card p-3 border border-border animate-pulse">
-                  <Award className="w-6 h-6 text-secondary" />
-                </div>
-                
-                <div className="absolute top-1/2 left-4 bg-card rounded-lg shadow-card p-3 border border-border animate-bounce" style={{animationDelay: '1s'}}>
-                  <TrendingUp className="w-6 h-6 text-accent" />
-                </div>
+              <div className="rounded-2xl overflow-hidden shadow-elegant aspect-[4/3]">
+                <img
+                  src={solutions[activeSolution].image}
+                  alt={solutions[activeSolution].title}
+                  className="w-full h-full object-cover transition-all duration-500"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
               </div>
             </div>
           </div>
@@ -193,27 +186,20 @@ const SolutionsSection = () => {
               Pronto para Implementar Soluções Estratégicas?
             </h3>
             <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
-              Nossa equipe está preparada para desenvolver soluções personalizadas 
+              Nossa equipe está preparada para desenvolver soluções personalizadas
               que atendam às necessidades específicas da sua organização.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button
-                size="lg"
-                onClick={() => window.open('https://wa.me/5567996442404', '_blank')}
-                className="bg-primary hover:bg-primary-dark text-primary-foreground"
-              >
-                Falar com Especialista
+              <Button size="lg" asChild className="bg-primary hover:bg-primary-dark text-primary-foreground">
+                <Link to="/diferenciais">
+                  Falar com especialista
+                  <ArrowRight className="w-5 h-5 ml-2" />
+                </Link>
               </Button>
-              <Button
-                variant="outline"
-                size="lg"
-                onClick={() => {
-                  const element = document.querySelector('#cases');
-                  if (element) element.scrollIntoView({ behavior: 'smooth' });
-                }}
-                className="border-primary text-primary hover:bg-primary hover:text-primary-foreground"
-              >
-                Ver Cases de Sucesso
+              <Button size="lg" asChild className="bg-white border-primary border-2 text-primary hover:bg-primary hover:text-white">
+                <Link to="/contato">
+                  Ver Cases de Sucesso
+                </Link>
               </Button>
             </div>
           </div>

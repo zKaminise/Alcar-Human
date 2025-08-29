@@ -2,7 +2,8 @@ import React from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Target, CheckCircle, Users, TrendingUp, Map, Lightbulb, BarChart3 } from 'lucide-react';
+import { Target, CheckCircle, Users, TrendingUp, Map, Lightbulb, BarChart3, ArrowRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const MapeamentoEstrategico = () => {
   const principalBenefits = [
@@ -19,7 +20,7 @@ const MapeamentoEstrategico = () => {
     },
     {
       number: "02",
-      title: "Definição de Objetivos", 
+      title: "Definição de Objetivos",
       description: "Estabelecimento de objetivos estratégicos claros, mensuráveis e alinhados com a visão da empresa."
     },
     {
@@ -42,7 +43,7 @@ const MapeamentoEstrategico = () => {
     },
     {
       icon: BarChart3,
-      title: "Análise de Performance", 
+      title: "Análise de Performance",
       description: "Criação de indicadores e métricas para acompanhamento de resultados"
     },
     {
@@ -70,26 +71,28 @@ const MapeamentoEstrategico = () => {
     <div className="min-h-screen bg-background">
       {/* Hero Section */}
       <section className="relative pt-32 pb-20 bg-gradient-to-r from-black/80 to-black/60 overflow-hidden">
-        <div 
+        <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{ backgroundImage: `url(/mapeamento-estrategico-hero.jpg)` }}
         />
         <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-black/50" />
         <div className="relative text-white">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
-            <Badge className="mb-4 bg-white/20 text-white">Serviços</Badge>
-            <h1 className="text-4xl md:text-6xl font-bold mb-6">
-              Mapeamento Estratégico
-            </h1>
-            <p className="text-xl md:text-2xl opacity-90 mb-8">
-              Planejamento estratégico e análise organizacional para impulsionar resultados
-            </p>
-            <Button size="lg" variant="secondary">
-              Solicitar Consultoria
-            </Button>
+          <div className="container mx-auto px-4">
+            <div className="max-w-4xl mx-auto text-center">
+              <Badge className="mb-4 bg-white/20 text-white">Serviços</Badge>
+              <h1 className="text-4xl md:text-6xl font-bold mb-6">
+                Mapeamento Estratégico
+              </h1>
+              <p className="text-xl md:text-2xl opacity-90 mb-8">
+                Planejamento estratégico e análise organizacional para impulsionar resultados
+              </p>
+              <Button size="lg" asChild className="bg-primary hover:bg-primary-dark text-primary-foreground">
+                <Link to="/contato">
+                  Solicitar Consultoria
+                </Link>
+              </Button>
+            </div>
           </div>
-        </div>
         </div>
       </section>
 
@@ -134,11 +137,11 @@ const MapeamentoEstrategico = () => {
               </div>
             </div>
             <div className="relative">
-              <div className="aspect-[4/3] bg-gradient-to-br from-primary/10 to-primary/5 rounded-2xl p-8 flex items-center justify-center">
-                <img 
-                  src="/lovable-uploads/4ed9b06a-4b64-4e1c-b495-4837d042d2a8.png" 
-                  alt="Dashboard estratégico em laptop"
-                  className="w-full h-full object-contain"
+              <div className="aspect-[4/3] rounded-2xl overflow-hidden shadow-elegant">
+                <img
+                  src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                  alt="Planejamento estratégico e análise de negócios"
+                  className="w-full h-full object-cover"
                 />
               </div>
             </div>
@@ -252,7 +255,7 @@ const MapeamentoEstrategico = () => {
                   <Users className="w-12 h-12 text-primary mx-auto mb-4" />
                   <h3 className="text-xl font-bold mb-4">Empresas em Crescimento</h3>
                   <p className="text-muted-foreground">
-                    Organizações que precisam estruturar seus processos e estratégias 
+                    Organizações que precisam estruturar seus processos e estratégias
                     para sustentar o crescimento.
                   </p>
                 </CardContent>
@@ -263,7 +266,7 @@ const MapeamentoEstrategico = () => {
                   <Target className="w-12 h-12 text-primary mx-auto mb-4" />
                   <h3 className="text-xl font-bold mb-4">Empresas em Transição</h3>
                   <p className="text-muted-foreground">
-                    Companhias passando por mudanças significativas que precisam 
+                    Companhias passando por mudanças significativas que precisam
                     realinhar sua estratégia.
                   </p>
                 </CardContent>
@@ -274,7 +277,7 @@ const MapeamentoEstrategico = () => {
                   <TrendingUp className="w-12 h-12 text-primary mx-auto mb-4" />
                   <h3 className="text-xl font-bold mb-4">Lideranças Visionárias</h3>
                   <p className="text-muted-foreground">
-                    Líderes que buscam ferramentas para tomar decisões mais 
+                    Líderes que buscam ferramentas para tomar decisões mais
                     assertivas e estratégicas.
                   </p>
                 </CardContent>
@@ -292,16 +295,30 @@ const MapeamentoEstrategico = () => {
               Pronto para Mapear o Futuro da Sua Empresa?
             </h2>
             <p className="text-xl text-muted-foreground mb-8">
-              Entre em contato e descubra como nosso Mapeamento Estratégico pode 
+              Entre em contato e descubra como nosso Mapeamento Estratégico pode
               transformar os resultados da sua organização.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg">
-                Solicitar Consultoria
+              <Button size="lg" asChild className="bg-primary hover:bg-primary-dark text-primary-foreground">
+                <Link to="/contato">
+                  Solicitar Consultoria
+                  <ArrowRight className="w-5 h-5 ml-2" />
+                </Link>
               </Button>
-              <Button size="lg" variant="outline">
-                Agendar Reunião
+              <Button
+                size="lg"
+                asChild
+                className="bg-white border-primary border-2 text-primary hover:bg-primary hover:text-white"
+              >
+                <a
+                  href="https://wa.me/5567996442404?text=Quero%20agendar%20uma%20reuni%C3%A3o%20para%20entender%20mais%20sobre%20o%20Mapeamento%20Estrat%C3%A9gico"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Agendar Reunião
+                </a>
               </Button>
+
             </div>
           </div>
         </div>

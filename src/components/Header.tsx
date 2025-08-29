@@ -66,9 +66,9 @@ const Header = () => {
               className="transition-all duration-300 hover:scale-105"
             >
               <img 
-                src="/lovable-uploads/7b262c46-4d6f-40ad-aa6b-f7c64b50a1e6.png" 
+                src="/Logo4.png" 
                 alt="Alçar Humà - Gestão e Pessoas" 
-                className="h-16 w-auto"
+                className="h-20 w-auto"
               />
             </Link>
           </div>

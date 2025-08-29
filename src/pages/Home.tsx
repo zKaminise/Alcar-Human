@@ -2,10 +2,10 @@ import React from 'react';
 import Carousel from '@/components/Carousel';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { 
-  Target, 
-  Users, 
-  Award, 
+import {
+  Target,
+  Users,
+  Award,
   TrendingUp,
   ArrowRight,
   CheckCircle,
@@ -25,7 +25,7 @@ const Home = () => {
     },
     {
       icon: Users,
-      title: 'Desenvolvimento de Pessoas',
+      title: 'Desenvolver Pessoas',
       description: 'Capacitação e engajamento de equipes de alta performance',
       link: '/solucoes'
     },
@@ -105,7 +105,7 @@ const Home = () => {
               Soluções que <span className="text-primary">Transformam</span> Organizações
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Oferecemos um portfólio completo de soluções estratégicas para impulsionar 
+              Oferecemos um portfólio completo de soluções estratégicas para impulsionar
               o crescimento e a performance da sua empresa.
             </p>
           </div>
@@ -193,9 +193,9 @@ const Home = () => {
                     </div>
                     <h3 className="text-lg font-bold text-foreground mb-3">{highlight.title}</h3>
                     <p className="text-muted-foreground text-sm mb-4">{highlight.description}</p>
-                    <Button variant="ghost" size="sm" asChild className="text-primary hover:text-primary-foreground hover:bg-primary p-0 h-auto font-semibold">
+                    <Button size="lg" asChild className="bg-primary hover:bg-primary-dark text-primary-foreground">
                       <Link to={highlight.link}>
-                        Saiba Mais
+                        Saiba mais
                         <ArrowRight className="w-4 h-4 ml-1" />
                       </Link>
                     </Button>
@@ -219,10 +219,10 @@ const Home = () => {
                 O que nos torna <span className="text-primary">Únicos</span>
               </h2>
               <p className="text-xl text-muted-foreground mb-8">
-                Combinamos experiência, metodologia própria e foco em resultados 
+                Combinamos experiência, metodologia própria e foco em resultados
                 para entregar soluções que realmente transformam organizações.
               </p>
-              
+
               <div className="space-y-6 mb-8">
                 {differentials.map((diff, index) => {
                   const IconComponent = diff.icon;
@@ -249,14 +249,12 @@ const Home = () => {
             </div>
 
             <div className="relative">
-              <div className="bg-gradient-to-br from-primary/10 to-secondary/10 rounded-2xl p-8 aspect-square flex items-center justify-center">
-                <div className="text-center">
-                  <div className="w-32 h-32 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-6">
-                    <Award className="w-16 h-16 text-primary" />
-                  </div>
-                  <h3 className="text-2xl font-bold text-foreground mb-2">Excelência Comprovada</h3>
-                  <p className="text-muted-foreground">15+ anos transformando organizações</p>
-                </div>
+              <div className="rounded-2xl overflow-hidden shadow-elegant">
+                <img
+                  src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                  alt="Excelência em consultoria empresarial"
+                  className="w-full aspect-square object-cover"
+                />
               </div>
             </div>
           </div>
@@ -270,7 +268,7 @@ const Home = () => {
             Pronto para Transformar sua Organização?
           </h2>
           <p className="text-xl text-white/90 mb-8 max-w-3xl mx-auto">
-            Descubra como nossas soluções estratégicas podem impulsionar 
+            Descubra como nossas soluções estratégicas podem impulsionar
             o crescimento e a performance da sua empresa.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -280,9 +278,9 @@ const Home = () => {
                 <ArrowRight className="w-5 h-5 ml-2" />
               </Link>
             </Button>
-            <Button 
-              variant="outline" 
-              size="lg" 
+            <Button
+              variant="outline"
+              size="lg"
               asChild
               className="border-none text-white bg-primary hover:bg-white hover:text-primary"
             >

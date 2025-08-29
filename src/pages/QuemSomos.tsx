@@ -59,14 +59,12 @@ const QuemSomos = () => {
               </Button>
             </div>
             <div className="relative">
-              <div className="aspect-square bg-gradient-to-br from-primary/20 to-primary/5 rounded-2xl p-8 flex items-center justify-center">
-                <div className="text-center">
-                  <Users className="w-24 h-24 text-primary mx-auto mb-4" />
-                  <p className="text-lg font-semibold text-foreground">
-                    Conectando Pessoas,<br />
-                    Transformando Organizações
-                  </p>
-                </div>
+              <div className="rounded-2xl overflow-hidden shadow-elegant">
+                <img 
+                  src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                  alt="Excelência em consultoria empresarial"
+                  className="w-full aspect-square object-cover"
+                />
               </div>
             </div>
           </div>
@@ -143,8 +141,12 @@ const QuemSomos = () => {
             <Card>
               <CardContent className="p-8">
                 <div className="grid md:grid-cols-2 gap-8 items-center">
-                  <div className="aspect-square bg-gradient-to-br from-primary/20 to-primary/5 rounded-xl flex items-center justify-center">
-                    <Users className="w-24 h-24 text-primary" />
+                  <div className="aspect-square rounded-xl overflow-hidden shadow-elegant">
+                    <img 
+                      src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                      alt="Profissional experiente em liderança e consultoria"
+                      className="w-full h-full object-cover"
+                    />
                   </div>
                   <div>
                     <h3 className="text-2xl font-bold text-foreground mb-4">

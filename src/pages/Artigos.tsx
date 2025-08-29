@@ -1,99 +1,41 @@
 import React, { useState, useMemo } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Calendar, User, Search, BookOpen, TrendingUp } from 'lucide-react';
+import { getAllArticles, getAllCategories } from '@/data/articlesData';
 
 const Artigos = () => {
+  const navigate = useNavigate();
   const [selectedCategory, setSelectedCategory] = useState("Todos");
   const [searchTerm, setSearchTerm] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const articlesPerPage = 3;
 
-  const articles = [
-    {
-      id: 1,
-      title: "O Futuro da Gestão de Pessoas: Tendências para 2024",
-      excerpt: "Explore as principais tendências que estão moldando o futuro da gestão de pessoas e como se preparar para elas.",
-      author: "Mariana Silva",
-      date: "15 de Janeiro, 2024",
-      category: "Gestão de Pessoas",
-      readTime: "8 min",
-      image: "/api/placeholder/400/250"
-    },
-    {
-      id: 2,
-      title: "Desenvolvimento de Liderança: Estratégias Práticas",
-      excerpt: "Descubra metodologias comprovadas para desenvolver líderes eficazes em sua organização.",
-      author: "João Santos",
-      date: "10 de Janeiro, 2024",
-      category: "Liderança",
-      readTime: "6 min",
-      image: "/api/placeholder/400/250"
-    },
-    {
-      id: 3,
-      title: "Cultura Organizacional: Como Transformar Sua Empresa",
-      excerpt: "Um guia completo para entender e transformar a cultura da sua organização.",
-      author: "Ana Costa",
-      date: "5 de Janeiro, 2024",
-      category: "Cultura",
-      readTime: "10 min",
-      image: "/api/placeholder/400/250"
-    },
-    {
-      id: 4,
-      title: "Mapeamento Estratégico: Ferramenta de Transformação",
-      excerpt: "Como utilizar o mapeamento estratégico para impulsionar resultados organizacionais.",
-      author: "Carlos Oliveira",
-      date: "28 de Dezembro, 2023",
-      category: "Estratégia",
-      readTime: "7 min",
-      image: "/api/placeholder/400/250"
-    },
-    {
-      id: 5,
-      title: "Mentoria Corporativa: Maximizando o Potencial Humano",
-      excerpt: "Os benefícios da mentoria corporativa e como implementar um programa eficaz.",
-      author: "Mariana Silva",
-      date: "22 de Dezembro, 2023",
-      category: "Desenvolvimento",
-      readTime: "5 min",
-      image: "/api/placeholder/400/250"
-    },
-    {
-      id: 6,
-      title: "Palestras Motivacionais: Impacto nos Resultados",
-      excerpt: "Como palestras e workshops podem transformar a motivação e produtividade das equipes.",
-      author: "Roberto Lima",
-      date: "18 de Dezembro, 2023",
-      category: "Motivação",
-      readTime: "9 min",
-      image: "/api/placeholder/400/250"
-    }
-  ];
+  const articles = getAllArticles();
 
-  const categories = ["Todos", "Gestão de Pessoas", "Liderança", "Cultura", "Estratégia", "Desenvolvimento", "Motivação"];
+  const categories = getAllCategories();
 
   // Filter articles based on category and search term
   const filteredArticles = useMemo(() => {
     let filtered = articles;
-    
+
     // Filter by category
     if (selectedCategory !== "Todos") {
       filtered = filtered.filter(article => article.category === selectedCategory);
     }
-    
+
     // Filter by search term
     if (searchTerm) {
-      filtered = filtered.filter(article => 
+      filtered = filtered.filter(article =>
         article.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
         article.excerpt.toLowerCase().includes(searchTerm.toLowerCase()) ||
         article.author.toLowerCase().includes(searchTerm.toLowerCase())
       );
     }
-    
+
     return filtered;
   }, [selectedCategory, searchTerm, articles]);
 
@@ -116,26 +58,31 @@ const Artigos = () => {
     setCurrentPage(page);
   };
 
+  const handleArticleClick = (articleId: number) => {
+    console.log('Clicking article with ID:', articleId); // Debug log
+    navigate(`/artigos/${articleId}`);
+  };
+
   return (
     <div className="min-h-screen bg-background">
       {/* Hero Section */}
       <section className="relative pt-32 pb-20 bg-gradient-to-r from-black/80 to-black/60 overflow-hidden">
-        <div 
+        <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{ backgroundImage: `url(/artigos-hero.jpg)` }}
         />
         <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-black/50" />
         <div className="relative text-white">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-4xl md:text-6xl font-bold mb-6">
-              Artigos e Insights
-            </h1>
-            <p className="text-xl md:text-2xl opacity-90">
-              Conhecimento prático para transformar pessoas e organizações
-            </p>
+          <div className="container mx-auto px-4">
+            <div className="max-w-4xl mx-auto text-center">
+              <h1 className="text-4xl md:text-6xl font-bold mb-6">
+                Artigos e Insights
+              </h1>
+              <p className="text-xl md:text-2xl opacity-90">
+                Conhecimento prático para transformar pessoas e organizações
+              </p>
+            </div>
           </div>
-        </div>
         </div>
       </section>
 
@@ -145,7 +92,7 @@ const Artigos = () => {
           <div className="flex flex-col md:flex-row gap-6 items-center justify-between">
             <div className="flex flex-wrap gap-2">
               {categories.map((category) => (
-                <Badge 
+                <Badge
                   key={category}
                   variant={category === selectedCategory ? "default" : "secondary"}
                   className="cursor-pointer hover:bg-primary hover:text-primary-foreground transition-colors"
@@ -157,7 +104,7 @@ const Artigos = () => {
             </div>
             <div className="relative max-w-md w-full">
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
-              <Input 
+              <Input
                 placeholder="Buscar artigos..."
                 className="pl-10"
                 value={searchTerm}
@@ -173,7 +120,7 @@ const Artigos = () => {
         <div className="container mx-auto px-4">
           <div className="grid lg:grid-cols-3 gap-8">
             {paginatedArticles.map((article) => (
-              <Card key={article.id} className="hover:shadow-lg transition-shadow cursor-pointer">
+              <Card key={article.id} className="hover:shadow-lg transition-shadow cursor-pointer" onClick={() => handleArticleClick(article.id)}>
                 <CardHeader className="p-0">
                   <div className="aspect-video bg-gradient-to-br from-primary/20 to-primary/5 rounded-t-lg flex items-center justify-center">
                     <BookOpen className="w-16 h-16 text-primary" />
@@ -184,15 +131,15 @@ const Artigos = () => {
                     <Badge variant="secondary">{article.category}</Badge>
                     <span className="text-sm text-muted-foreground">{article.readTime} de leitura</span>
                   </div>
-                  
-                  <h3 className="text-xl font-bold text-foreground mb-3 hover:text-primary transition-colors">
+
+                  <h3 className="text-xl font-bold text-foreground mb-3 hover:text-primary transition-colors cursor-pointer">
                     {article.title}
                   </h3>
-                  
+
                   <p className="text-muted-foreground mb-4 line-clamp-3">
                     {article.excerpt}
                   </p>
-                  
+
                   <div className="flex items-center justify-between text-sm text-muted-foreground">
                     <div className="flex items-center gap-4">
                       <div className="flex items-center gap-1">
@@ -204,7 +151,15 @@ const Artigos = () => {
                         <span>{article.date}</span>
                       </div>
                     </div>
-                    <Button variant="ghost" size="sm" className="text-primary hover:text-primary-dark">
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      className="text-primary hover:text-primary-dark"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        handleArticleClick(article.id);
+                      }}
+                    >
                       Ler mais →
                     </Button>
                   </div>
@@ -216,8 +171,8 @@ const Artigos = () => {
           {/* Paginação */}
           <div className="flex justify-center mt-12">
             <div className="flex gap-2">
-              <Button 
-                variant="outline" 
+              <Button
+                variant="outline"
                 size="sm"
                 onClick={() => handlePageChange(currentPage - 1)}
                 disabled={currentPage === 1}
@@ -234,8 +189,8 @@ const Artigos = () => {
                   {page}
                 </Button>
               ))}
-              <Button 
-                variant="outline" 
+              <Button
+                variant="outline"
                 size="sm"
                 onClick={() => handlePageChange(currentPage + 1)}
                 disabled={currentPage === totalPages}
@@ -256,11 +211,11 @@ const Artigos = () => {
               Receba Nossos Insights
             </h2>
             <p className="text-muted-foreground mb-8">
-              Assine nossa newsletter e receba semanalmente conteúdos exclusivos 
+              Assine nossa newsletter e receba semanalmente conteúdos exclusivos
               sobre gestão de pessoas e desenvolvimento organizacional.
             </p>
             <div className="flex gap-4 max-w-md mx-auto">
-              <Input 
+              <Input
                 placeholder="Seu melhor e-mail"
                 className="flex-1"
               />

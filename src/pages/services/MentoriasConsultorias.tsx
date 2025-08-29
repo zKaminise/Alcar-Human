@@ -2,7 +2,8 @@ import React from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { MessageCircle, CheckCircle, Lightbulb, Target, Users, Brain } from 'lucide-react';
+import { MessageCircle, CheckCircle, Lightbulb, Target, Users, Brain, ArrowRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const MentoriasConsultorias = () => {
   const benefits = [
@@ -41,26 +42,28 @@ const MentoriasConsultorias = () => {
     <div className="min-h-screen bg-background">
       {/* Hero Section */}
       <section className="relative pt-32 pb-20 bg-gradient-to-r from-black/80 to-black/60 overflow-hidden">
-        <div 
+        <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{ backgroundImage: `url(/mentorias-consultorias-hero.jpg)` }}
         />
         <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-black/50" />
         <div className="relative text-white">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
-            <Badge className="mb-4 bg-white/20 text-white">Serviços</Badge>
-            <h1 className="text-4xl md:text-6xl font-bold mb-6">
-              Mentorias e Consultorias
-            </h1>
-            <p className="text-xl md:text-2xl opacity-90 mb-8">
-              Orientação especializada e consultoria para acelerar seus resultados
-            </p>
-            <Button size="lg" variant="secondary">
-              Solicitar Mentoria
-            </Button>
+          <div className="container mx-auto px-4">
+            <div className="max-w-4xl mx-auto text-center">
+              <Badge className="mb-4 bg-white/20 text-white">Serviços</Badge>
+              <h1 className="text-4xl md:text-6xl font-bold mb-6">
+                Mentorias e Consultorias
+              </h1>
+              <p className="text-xl md:text-2xl opacity-90 mb-8">
+                Orientação especializada e consultoria para acelerar seus resultados
+              </p>
+              <Button size="lg" asChild className="bg-primary hover:bg-primary-dark text-primary-foreground">
+                <Link to="/contato">
+                  Solicitar Mentoria
+                </Link>
+              </Button>
+            </div>
           </div>
-        </div>
         </div>
       </section>
 
@@ -74,25 +77,29 @@ const MentoriasConsultorias = () => {
               </h2>
               <div className="space-y-4 text-muted-foreground">
                 <p>
-                  Nossas mentorias e consultorias combinam anos de experiência prática 
-                  com metodologias comprovadas para acelerar seu desenvolvimento e 
+                  Nossas mentorias e consultorias combinam anos de experiência prática
+                  com metodologias comprovadas para acelerar seu desenvolvimento e
                   resolver desafios complexos de gestão e liderança.
                 </p>
                 <p>
-                  Oferecemos um acompanhamento próximo e personalizado, adaptando 
-                  nossas abordagens às necessidades específicas de cada cliente, 
+                  Oferecemos um acompanhamento próximo e personalizado, adaptando
+                  nossas abordagens às necessidades específicas de cada cliente,
                   seja individual ou organizacional.
                 </p>
                 <p>
-                  Nossa expertise abrange desde desenvolvimento de lideranças até 
-                  soluções estratégicas para transformação organizacional, sempre 
+                  Nossa expertise abrange desde desenvolvimento de lideranças até
+                  soluções estratégicas para transformação organizacional, sempre
                   com foco em resultados práticos e sustentáveis.
                 </p>
               </div>
             </div>
             <div className="relative">
-              <div className="aspect-square bg-gradient-to-br from-primary/20 to-primary/5 rounded-2xl p-8 flex items-center justify-center">
-                <MessageCircle className="w-32 h-32 text-primary" />
+              <div className="aspect-[4/3] rounded-2xl overflow-hidden shadow-elegant">
+                <img
+                  src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                  alt="Planejamento estratégico e análise de negócios"
+                  className="w-full h-full object-cover"
+                />
               </div>
             </div>
           </div>
@@ -118,8 +125,10 @@ const MentoriasConsultorias = () => {
                   <service.icon className="w-12 h-12 text-primary mb-4" />
                   <h3 className="text-xl font-bold mb-4">{service.title}</h3>
                   <p className="text-muted-foreground mb-6">{service.description}</p>
-                  <Button variant="outline" size="sm">
-                    Saiba Mais
+                  <Button size="lg" asChild className="bg-primary hover:bg-primary-dark text-primary-foreground">
+                    <Link to="/diferenciais">
+                      Saiba mais
+                    </Link>
                   </Button>
                 </CardContent>
               </Card>
@@ -197,8 +206,12 @@ const MentoriasConsultorias = () => {
         <div className="container mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="relative">
-              <div className="aspect-square bg-gradient-to-br from-primary/20 to-primary/5 rounded-2xl p-8 flex items-center justify-center">
-                <Users className="w-32 h-32 text-primary" />
+              <div className="aspect-[4/3] rounded-2xl overflow-hidden shadow-elegant">
+                <img
+                  src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                  alt="Planejamento estratégico e análise de negócios"
+                  className="w-full h-full object-cover"
+                />
               </div>
             </div>
             <div>
@@ -239,7 +252,7 @@ const MentoriasConsultorias = () => {
                 <Target className="w-12 h-12 text-primary mx-auto mb-4" />
                 <h3 className="text-xl font-bold mb-4">Executivos e Líderes</h3>
                 <p className="text-muted-foreground">
-                  Profissionais em posições de liderança que querem aprimorar 
+                  Profissionais em posições de liderança que querem aprimorar
                   suas competências e resultados.
                 </p>
               </CardContent>
@@ -250,7 +263,7 @@ const MentoriasConsultorias = () => {
                 <Lightbulb className="w-12 h-12 text-primary mx-auto mb-4" />
                 <h3 className="text-xl font-bold mb-4">Empreendedores</h3>
                 <p className="text-muted-foreground">
-                  Donos de negócios que buscam orientação estratégica 
+                  Donos de negócios que buscam orientação estratégica
                   para crescer e escalar suas empresas.
                 </p>
               </CardContent>
@@ -261,7 +274,7 @@ const MentoriasConsultorias = () => {
                 <Users className="w-12 h-12 text-primary mx-auto mb-4" />
                 <h3 className="text-xl font-bold mb-4">Equipes de RH</h3>
                 <p className="text-muted-foreground">
-                  Profissionais de recursos humanos que querem se especializar 
+                  Profissionais de recursos humanos que querem se especializar
                   em gestão de pessoas.
                 </p>
               </CardContent>
@@ -281,11 +294,20 @@ const MentoriasConsultorias = () => {
               Aproveite nossa experiência para superar desafios e alcançar seus objetivos mais rapidamente.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg">
-                Solicitar Mentoria
+              <Button size="lg" asChild className="bg-primary hover:bg-primary-dark text-primary-foreground">
+                <Link to="/contato">
+                  Solicitar Mentoria
+                  <ArrowRight className="w-5 h-5 ml-2" />
+                </Link>
               </Button>
-              <Button size="lg" variant="outline">
-                Consultoria Personalizada
+              <Button size="lg" asChild className="bg-white border-primary border-2 text-primary hover:bg-primary hover:text-white">
+                <a
+                  href="https://wa.me/5567996442404?text=Quero%20agendar%20uma%20reuni%C3%A3o%20para%20entender%20mais%20sobre%20a%20Mentoria%20Personalizada"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Mentoria Personalizada
+                </a>
               </Button>
             </div>
           </div>

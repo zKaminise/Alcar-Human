@@ -59,7 +59,7 @@ const DifferentialsSection = () => {
   ];
 
   return (
-    <section id="diferenciais" className="py-20 bg-neutral-light">
+    <section id="diferenciais" className="py-20">
       <div className="container mx-auto px-4 sm:px-6">
         {/* Header */}
         <div className="text-center mb-16 animate-fade-in">

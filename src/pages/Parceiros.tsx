@@ -256,7 +256,7 @@ const Parceiros = () => {
                         {sending ? "Enviando..." : "Enviar Proposta de Parceria"}
                       </Button>
                       <Button variant="outline" className="w-full border-primary text-primary hover:bg-primary hover:text-white" size="lg" type="button"
-                              onClick={() => window.open('https://wa.me/5567996442404', '_blank')}>
+                              onClick={() => window.open("https://wa.me/5567996442404?text=Gostaria%20de%20agendar%20uma%20reuni%C3%A3o%20para%20falarmos%20mais%20sobre%20Parcerias!", '_blank')}>
                         <ArrowRight className="w-4 h-4 mr-2" />
                         Agendar Reunião
                       </Button>

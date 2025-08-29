@@ -18,7 +18,7 @@ const Carousel = () => {
       overlayColor: "bg-primary/20",
       icon: Target,
       stats: { number: "15+", label: "Anos de Experiência" },
-      image: "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?q=80&w=2070"
+      image: "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80"
     },
     {
       id: 2,
@@ -31,7 +31,7 @@ const Carousel = () => {
       overlayColor: "bg-secondary/20",
       icon: Users,
       stats: { number: "100+", label: "Empresas Transformadas" },
-      image: "https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=2069"
+      image: "https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80"
     },
     {
       id: 3,
@@ -44,7 +44,7 @@ const Carousel = () => {
       overlayColor: "bg-primary-dark/20",
       icon: TrendingUp,
       stats: { number: "95%", label: "Taxa de Sucesso" },
-      image: "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?q=80&w=1926"
+      image: "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80"
     },
     {
       id: 4,
@@ -57,7 +57,7 @@ const Carousel = () => {
       overlayColor: "bg-neutral-dark/20",
       icon: Building2,
       stats: { number: "1000+", label: "Profissionais Capacitados" },
-      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=2070"
+      image: "/Valor.png"
     },
     {
       id: 5,
@@ -70,7 +70,7 @@ const Carousel = () => {
       overlayColor: "bg-accent/20",
       icon: Lightbulb,
       stats: { number: "98%", label: "Satisfação dos Clientes" },
-      image: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=2070"
+      image: "https://images.unsplash.com/photo-1521737711867-e3b97375f902?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80"
     }
   ];
 
@@ -95,9 +95,10 @@ const Carousel = () => {
           src={slides[currentSlide].image}
           alt={slides[currentSlide].subtitle}
           className="w-full h-full object-cover transition-all duration-1000 transform scale-105"
+          loading="eager" decoding="async" fetchPriority="high"
         />
         {/* Gradient Overlay */}
-        <div className={`absolute inset-0 bg-gradient-to-br ${slides[currentSlide].background} opacity-90 transition-all duration-1000`} />
+        <div className={`absolute inset-0 bg-gradient-to-br ${slides[currentSlide].background} opacity-70 transition-all duration-1000`} />
         {/* Additional Color Overlay */}
         <div className={`absolute inset-0 ${slides[currentSlide].overlayColor} transition-all duration-1000`} />
       </div>
@@ -166,31 +167,17 @@ const Carousel = () => {
           {/* Enhanced Visual Element */}
           <div className="relative animate-fade-in" key={`visual-${currentSlide}`}>
             <div className="relative">
-              {/* Main Visual Card */}
-              <div className="relative rounded-3xl overflow-hidden shadow-2xl bg-white/10 backdrop-blur-lg border border-white/20">
-                <div className="aspect-[4/3] flex items-center justify-center p-8">
-                  <div className="text-center">
-                    {/* Animated Icon Container */}
-                    <div className="relative mb-8">
-                      <div className="w-40 h-40 bg-gradient-to-br from-white/30 to-white/10 rounded-full flex items-center justify-center mx-auto backdrop-blur-sm border border-white/30 shadow-glow animate-pulse">
-                        <div className="w-20 h-20 bg-white rounded-full flex items-center justify-center shadow-elegant">
-                          {React.createElement(slides[currentSlide].icon, {
-                            className: "w-10 h-10 text-primary"
-                          })}
-                        </div>
-                      </div>
-                      {/* Floating Ring Animation */}
-                      <div className="absolute inset-0 rounded-full border-2 border-white/30 animate-ping"></div>
-                    </div>
-                    
-                    <h3 className="text-3xl font-bold text-white mb-4">
-                      {slides[currentSlide].subtitle}
-                    </h3>
-                    <div className="bg-white/20 rounded-lg p-4 backdrop-blur-sm">
-                      <div className="text-2xl font-bold text-white">{slides[currentSlide].stats.number}</div>
-                      <div className="text-sm text-white/90">{slides[currentSlide].stats.label}</div>
-                    </div>
-                  </div>
+              {/* Main Visual Card - now shows an image instead of text */}
+              <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-white/20">
+                <div className="aspect-[4/3] relative">
+                  <img
+                    src={slides[currentSlide].image}
+                    alt={slides[currentSlide].subtitle}
+                    className="w-full h-full object-cover"
+                    loading="eager"
+                    decoding="async"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-tr from-black/40 via-black/10 to-transparent" />
                 </div>
               </div>
               
