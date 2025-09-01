@@ -66,10 +66,10 @@ const DifferentialsSection = () => {
           <div className="inline-flex items-center px-4 py-2 bg-primary/10 rounded-full text-primary text-sm font-medium mb-6">
             Nossos Diferenciais
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-            O que nos torna <span className="text-primary">Únicos</span> no Mercado
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+            O que nos torna <span className="text-secondary">Únicos</span> no Mercado
           </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl text-white/90 max-w-3xl mx-auto leading-relaxed">
             Combinamos experiência, metodologia própria e foco em resultados para 
             entregar soluções que realmente transformam organizações.
           </p>

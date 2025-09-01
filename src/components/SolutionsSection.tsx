@@ -84,11 +84,11 @@ const SolutionsSection = () => {
           <div className="inline-flex items-center px-4 py-2 bg-primary/10 rounded-full text-primary text-sm font-medium mb-6">
             Nossas Soluções
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-            Soluções <span className="text-primary">Estratégicas</span> que
-            <span className="text-secondary"> Transformam</span>
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+            Soluções <span className="text-secondary">Estratégicas</span> que
+            <span className="text-white"> Transformam</span>
           </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl text-white/90 max-w-3xl mx-auto leading-relaxed">
             Oferecemos um portfólio completo de soluções para impulsionar o crescimento
             e a performance da sua organização através do desenvolvimento estratégico.
           </p>

@@ -53,10 +53,10 @@ const QuemSomos = () => {
                   gerar resultados sustentáveis e transformações duradouras.
                 </p>
               </div>
-              <Button className="mt-6" size="lg">
+              {/*<Button className="mt-6" size="lg">
                 <Download className="w-4 h-4 mr-2" />
                 Download Material Institucional
-              </Button>
+              </Button>*/}
             </div>
             <div className="relative">
               <div className="rounded-2xl overflow-hidden shadow-elegant">

@@ -202,7 +202,7 @@ const Artigos = () => {
         </div>
       </section>
 
-      {/* Newsletter */}
+      {/* Newsletter
       <section className="py-20 bg-muted/50">
         <div className="container mx-auto px-4">
           <div className="max-w-2xl mx-auto text-center">
@@ -223,7 +223,7 @@ const Artigos = () => {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
     </div>
   );
 };

@@ -1,21 +1,22 @@
 import React, { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
-import { Menu, X, Phone, MessageSquare, ChevronDown } from 'lucide-react';
+import { Menu, X, Phone, ChevronDown } from 'lucide-react';
 import { useLocation, Link } from 'react-router-dom';
 
-const Header = () => {
+const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const [dropdownTimeout, setDropdownTimeout] = useState<NodeJS.Timeout | null>(null);
   const location = useLocation();
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
-    };
+  // Ajuste os caminhos das logos aqui:
+  const logoDark = '/Logo4.png';       // versão escura/preta (p/ header claro)
+  const logoLight = '/LogoClara.png'; // versão clara/branca (p/ topo transparente)
 
-    window.addEventListener('scroll', handleScroll);
+  useEffect(() => {
+    const handleScroll = () => setIsScrolled(window.scrollY > 20);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -35,9 +36,7 @@ const Header = () => {
   };
 
   const handleDropdownLeave = () => {
-    const timeout = setTimeout(() => {
-      setActiveDropdown(null);
-    }, 150); // Delay de 150ms antes de fechar
+    const timeout = setTimeout(() => setActiveDropdown(null), 150);
     setDropdownTimeout(timeout);
   };
 
@@ -50,10 +49,10 @@ const Header = () => {
   };
 
   return (
-    <header 
+    <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled 
-          ? 'bg-background/95 backdrop-blur-lg shadow-card border-b border-border' 
+        isScrolled
+          ? 'bg-background/95 backdrop-blur-lg shadow-card border-b border-border'
           : 'bg-gradient-to-b from-black/70 via-black/50 to-transparent backdrop-blur-sm'
       }`}
     >
@@ -61,15 +60,26 @@ const Header = () => {
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <div className="flex-shrink-0">
-            <Link 
-              to="/"
-              className="transition-all duration-300 hover:scale-105"
-            >
-              <img 
-                src="/Logo4.png" 
-                alt="Alçar Humà - Gestão e Pessoas" 
-                className="h-20 w-auto"
+            <Link to="/" className="transition-transform duration-300 hover:scale-105">
+              {/* Versão com duas logos e transição suave */}
+              <img
+                src={isScrolled ? logoDark : logoLight}
+                alt="Alçar Humà - Gestão e Pessoas"
+                className={`h-20 w-auto transition-opacity duration-300 ${
+                  isScrolled ? 'opacity-100' : 'opacity-100 drop-shadow'
+                }`}
               />
+              {/*
+                Fallback (caso você ainda não tenha a logo branca):
+                - Use apenas a logoDark e aplique filtros quando no topo:
+                <img
+                  src={logoDark}
+                  alt="Alçar Humà"
+                  className={`h-20 w-auto transition duration-300 ${
+                    isScrolled ? '' : 'filter invert brightness-200 drop-shadow'
+                  }`}
+                />
+              */}
             </Link>
           </div>
 
@@ -78,7 +88,7 @@ const Header = () => {
             <Link
               to="/quem-somos"
               className={`transition-colors font-medium relative group drop-shadow-md ${
-                isScrolled 
+                isScrolled
                   ? `text-foreground hover:text-primary ${location.pathname === '/quem-somos' ? 'text-primary' : ''}`
                   : `text-white hover:text-white/80 ${location.pathname === '/quem-somos' ? 'text-white' : ''}`
               }`}
@@ -88,14 +98,14 @@ const Header = () => {
             </Link>
 
             {/* Serviços Dropdown */}
-            <div 
+            <div
               className="relative"
               onMouseEnter={() => handleDropdownEnter('servicos')}
               onMouseLeave={handleDropdownLeave}
             >
               <button
                 className={`flex items-center transition-colors font-medium relative group drop-shadow-md ${
-                  isScrolled 
+                  isScrolled
                     ? `text-foreground hover:text-primary ${location.pathname.startsWith('/servicos') ? 'text-primary' : ''}`
                     : `text-white hover:text-white/80 ${location.pathname.startsWith('/servicos') ? 'text-white' : ''}`
                 }`}
@@ -104,9 +114,9 @@ const Header = () => {
                 <ChevronDown className="w-4 h-4 ml-1" />
                 <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
               </button>
-              
+
               {activeDropdown === 'servicos' && (
-                <div 
+                <div
                   className="absolute top-full left-0 mt-1 w-80 bg-card rounded-lg shadow-elegant border border-border p-6 animate-fade-in z-50"
                   onMouseEnter={() => handleDropdownEnter('servicos')}
                   onMouseLeave={handleDropdownLeave}
@@ -131,7 +141,7 @@ const Header = () => {
             <Link
               to="/parceiros"
               className={`transition-colors font-medium relative group drop-shadow-md ${
-                isScrolled 
+                isScrolled
                   ? `text-foreground hover:text-primary ${location.pathname === '/parceiros' ? 'text-primary' : ''}`
                   : `text-white hover:text-white/80 ${location.pathname === '/parceiros' ? 'text-white' : ''}`
               }`}
@@ -143,7 +153,7 @@ const Header = () => {
             <Link
               to="/artigos"
               className={`transition-colors font-medium relative group drop-shadow-md ${
-                isScrolled 
+                isScrolled
                   ? `text-foreground hover:text-primary ${location.pathname === '/artigos' ? 'text-primary' : ''}`
                   : `text-white hover:text-white/80 ${location.pathname === '/artigos' ? 'text-white' : ''}`
               }`}
@@ -151,38 +161,24 @@ const Header = () => {
               Artigos
               <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
             </Link>
-            
+
             <Link
               to="/contato"
               className={`transition-colors font-medium relative group drop-shadow-md ${
-                isScrolled 
+                isScrolled
                   ? `text-foreground hover:text-primary ${location.pathname === '/contato' ? 'text-primary' : ''}`
                   : `text-white hover:text-white/80 ${location.pathname === '/contato' ? 'text-white' : ''}`
               }`}
             >
               Contato
-              <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
+              <span className="absolute left-0 bottom-0 w-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
             </Link>
           </nav>
 
           {/* CTA Buttons - Desktop */}
           <div className="hidden lg:flex items-center space-x-4">
-            <Button
-              variant="outline"
-              size="sm"
-              onClick={() => window.open('tel:+5567996442404', '_self')}
-              className="border-primary text-primary hover:bg-primary hover:text-primary-foreground"
-            >
-              <Phone className="w-4 h-4 mr-2" />
-              (67) 99644-2404
-            </Button>
-            <Button
-              asChild
-              className="bg-primary hover:bg-primary-dark text-primary-foreground"
-            >
-              <Link to="/seja-parceiro">
-                Seja Nosso Parceiro
-              </Link>
+            <Button asChild className="bg-primary hover:bg-primary-dark text-primary-foreground">
+              <Link to="/seja-parceiro">Seja Nosso Parceiro</Link>
             </Button>
           </div>
 
@@ -258,13 +254,8 @@ const Header = () => {
                   <Phone className="w-4 h-4 mr-2" />
                   (67) 99644-2404
                 </Button>
-                <Button
-                  asChild
-                  className="w-full bg-primary hover:bg-primary-dark text-primary-foreground"
-                >
-                  <Link to="/seja-parceiro">
-                    Seja Nosso Parceiro
-                  </Link>
+                <Button asChild className="w-full bg-primary hover:bg-primary-dark text-primary-foreground">
+                  <Link to="/seja-parceiro">Seja Nosso Parceiro</Link>
                 </Button>
               </div>
             </nav>

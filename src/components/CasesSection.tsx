@@ -86,11 +86,11 @@ const CasesSection = () => {
           <div className="inline-flex items-center px-4 py-2 bg-primary/10 rounded-full text-primary text-sm font-medium mb-6">
             Cases de Sucesso
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-            Resultados que <span className="text-primary">Comprovam</span> 
-            nossa <span className="text-secondary">Excelência</span>
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+            Resultados que <span className="text-secondary">Comprovam</span> 
+            nossa <span className="text-White">Excelência</span>
           </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl text-white/90 max-w-3xl mx-auto leading-relaxed">
             Conheça alguns dos projetos que transformaram organizações e 
             geraram resultados mensuráveis para nossos clientes.
           </p>
